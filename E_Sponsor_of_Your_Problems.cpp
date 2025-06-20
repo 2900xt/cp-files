@@ -44,31 +44,29 @@ inline void open(string name){
 #include "cp-templates/Debugging/alldebug.h"
 #endif
 
+int f(ll a, ll b)
+{
+    string s1 = to_string(a);
+    string s2 = to_string(b);
+    int ans = 0;
+    for(int i = 0; i < s1.size(); i++)
+    {
+        ans += (s1[i] == s2[i]);
+    }
+    return ans;
+}
+
+int rec(ll l, ll r, ll val)
+{
+    if (l+val > r) return 1e9;
+    return min(f(l, l+val) + f(l+val, r), 
+        min(rec(l, r, val*10 + 1), rec(l, r, val*10 + 2)));
+}
+
 void solve(int num_tc)
 {
-    int n; cin >> n;
-    string s; cin >> s;
-    ll ans = 0;
-    vector<ll> p(n+1, 0);
-
-    for(int i = 0; i < n; i++)
-    {
-        p[i+1] = p[i] + (s[i] == '1' ? 1 : -1);
-    }
-
-    for(ll i = 1; i <= n; i++)
-    {
-        ans += i * (n - i + 1);
-    }
-    sort(all(p));
-
-    for(ll i = 0; i <= n; i++)
-    {
-        ans += p[i] * (i - (n - i));
-    }
-
-    cout << ans/2 << endll;
-
+    ll l, r; cin >> l >> r;
+    cout << rec(l, r, 0) << endll;
 }
 
 int32_t main()

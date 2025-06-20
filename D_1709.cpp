@@ -47,27 +47,49 @@ inline void open(string name){
 void solve(int num_tc)
 {
     int n; cin >> n;
-    string s; cin >> s;
-    ll ans = 0;
-    vector<ll> p(n+1, 0);
+    vector<int> a(n), b(n);
+    fillv(a, n);
+    fillv(b, n);
+
+    vector<pair<int, int>> ops{};
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = 1; j < n; j++)
+        {
+            if(a[j-1] > a[j])
+            {
+                ops.push_back({1, j});
+                swap(a[j-1], a[j]);
+            }
+        }
+    }
 
     for(int i = 0; i < n; i++)
     {
-        p[i+1] = p[i] + (s[i] == '1' ? 1 : -1);
+        for(int j = 1; j < n; j++)
+        {
+            if(b[j-1] > b[j])
+            {
+                ops.push_back({2, j});
+                swap(b[j-1], b[j]);
+            }
+        }
     }
 
-    for(ll i = 1; i <= n; i++)
+    for(int i = 0; i < n; i++)
     {
-        ans += i * (n - i + 1);
+        if(a[i] > b[i])
+        {
+            ops.push_back({3, i+1});
+            swap(a[i], b[i]);
+        }
     }
-    sort(all(p));
 
-    for(ll i = 0; i <= n; i++)
+    cout << ops.size() << endll;
+    for(int i = 0; i < ops.size(); i++)
     {
-        ans += p[i] * (i - (n - i));
+        cout << ops[i].first << " " << ops[i].second << endll;
     }
-
-    cout << ans/2 << endll;
 
 }
 
