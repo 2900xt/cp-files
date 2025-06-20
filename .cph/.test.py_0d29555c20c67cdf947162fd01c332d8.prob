@@ -1,0 +1,1 @@
+{"name":"Local: test","url":"/home/taha/cp-files/test.py","tests":[{"id":1738414950838,"input":"","output":"0000110000000000000110100000001000000100000000000111110000100100000001100010100000000000000000000000"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/taha/cp-files/test.py","group":"local","local":true}

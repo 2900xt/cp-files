@@ -1,0 +1,1 @@
+{"name":"Local: p5","url":"/home/taha/cp-files/USIOT/p5.cpp","tests":[{"id":1738890745943,"input":"3 2 3\n5 2\n3 3\n0 10\n2\n0 1\n1\n2\n1\n0\n2\n0 1\n3\n0 1 2","output":"3\n0\n0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/taha/cp-files/USIOT/p5.cpp","group":"local","local":true}
